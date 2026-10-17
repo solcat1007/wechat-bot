@@ -1,0 +1,44 @@
+# ===== 安全凭据 =====
+config.py
+
+# ===== 个人隐私数据 =====
+chat_contexts.json
+recurring_reminders.json
+user_timers.json
+
+# ===== 运行时数据 =====
+CoreMemory/
+Memory_Temp/
+forum_data/
+*.log
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ===== 大文件/二进制 =====
+*.exe
+*.whl
+*.msi
+*.zip
+*.7z
+
+# ===== IDE / 编辑器 =====
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ===== 临时文件 =====
+temp/
+output/
+*.lock
+*.tmp

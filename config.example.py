@@ -1,0 +1,110 @@
+# ============================================================
+# WeChatBot 配置文件模板
+# 复制此文件为 config.py 并填入你的 API Key
+# copy config.example.py config.py
+# ============================================================
+
+# --- AI API 配置 ---
+DEEPSEEK_API_KEY = ''          # 主模型 API Key（必填）
+DEEPSEEK_BASE_URL = 'https://api.deepseek.com'  # 也可用 https://api.siliconflow.cn/v1/
+MODEL = 'deepseek-v3-0324'
+
+# --- 月之暗面（图像识别）---
+MOONSHOT_API_KEY = ''
+MOONSHOT_BASE_URL = 'https://api.moonshot.cn/v1'
+MOONSHOT_MODEL = 'moonshot-v1-8k'
+MOONSHOT_TEMPERATURE = 0.3
+
+# --- 联网搜索 ---
+ONLINE_API_KEY = ''
+ONLINE_BASE_URL = 'https://api.jiyuanzhiguang.top/v1'
+ONLINE_MODEL = 'net-gpt-4o-mini'
+ONLINE_API_TEMPERATURE = 0.7
+ENABLE_ONLINE_API = True
+ONLINE_API_MAX_TOKEN = 500
+
+# --- Assistant 模型（记忆摘要等）---
+ENABLE_ASSISTANT_MODEL = False
+ASSISTANT_API_KEY = ''
+ASSISTANT_BASE_URL = ''
+ASSISTANT_MODEL = ''
+ASSISTANT_TEMPERATURE = 0.3
+ASSISTANT_MAX_TOKEN = 2000
+USE_ASSISTANT_FOR_MEMORY_SUMMARY = False
+
+# --- 生成参数 ---
+TEMPERATURE = 0.7
+MAX_TOKEN = 500
+
+# --- 监控好友列表 ---
+# 格式：[[微信昵称, Prompt文件名], ...]
+LISTEN_LIST = [
+    # ['好友1', 'default'],
+    # ['好友2', 'custom_role'],
+]
+
+# --- 群聊 ---
+MAX_GROUPS = 5
+ENABLE_GROUP_AT_REPLY = True
+ENABLE_GROUP_KEYWORD_REPLY = False
+GROUP_KEYWORD_REPLY_IGNORE_PROBABILITY = False
+GROUP_KEYWORD_LIST = []
+GROUP_CHAT_RESPONSE_PROBABILITY = 100
+
+# --- 消息队列 ---
+QUEUE_WAITING_TIME = 3
+
+# --- 消息发送 ---
+AVERAGE_TYPING_SPEED = 10.0
+RANDOM_TYPING_SPEED_MIN = 2.0
+RANDOM_TYPING_SPEED_MAX = 20.0
+
+# --- 功能开关 ---
+ENABLE_IMAGE_RECOGNITION = True
+ENABLE_EMOJI_RECOGNITION = True
+ENABLE_EMOJI_SENDING = True
+EMOJI_SENDING_PROBABILITY = 100
+ENABLE_AUTO_MESSAGE = False
+ENABLE_MEMORY = True
+UPLOAD_MEMORY_TO_AI = False
+MAX_MEMORY_NUMBER = 50
+MAX_MESSAGE_LOG_ENTRIES = 50
+ENABLE_REMINDERS = True
+ALLOW_REMINDERS_IN_QUIET_TIME = False
+USE_VOICE_CALL_FOR_REMINDERS = False
+ENABLE_SCHEDULED_RESTART = False
+ENABLE_LOGIN_PASSWORD = False
+ENABLE_TEXT_COMMANDS = True
+ENABLE_SENSITIVE_CONTENT_CLEARING = False
+SAVE_MEMORY_TO_SEPARATE_FILE = True
+REMOVE_PARENTHESES = False
+SEPARATE_ROW_SYMBOLS = True
+IGNORE_GROUP_CHAT_FOR_AUTO_MESSAGE = True
+
+# --- 论坛 ---
+ENABLE_FORUM_CUSTOM_MODEL = False
+FORUM_API_KEY = ''
+FORUM_BASE_URL = ''
+FORUM_MODEL = ''
+FORUM_TEMPERATURE = 0.7
+FORUM_MAX_TOKEN = 500
+
+# --- 定时重启 ---
+RESTART_INTERVAL_HOURS = 2.0
+RESTART_INACTIVITY_MINUTES = 15
+
+# --- 定时消息 ---
+MIN_COUNTDOWN_HOURS = 2.0
+MAX_COUNTDOWN_HOURS = 12.0
+
+# --- 网络请求 ---
+REQUESTS_TIMEOUT = 30
+MAX_WEB_CONTENT_LENGTH = 4000
+
+# --- Web 后台 ---
+PORT = 5000
+LOGIN_PASSWORD = '123'
+
+# --- 记忆存储 ---
+CORE_MEMORY_DIR = 'CoreMemory'
+MEMORY_TEMP_DIR = 'Memory_Temp'
