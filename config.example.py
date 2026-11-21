@@ -103,7 +103,7 @@ MAX_WEB_CONTENT_LENGTH = 4000
 
 # --- Web 后台 ---
 PORT = 5000
-LOGIN_PASSWORD = '123'
+LOGIN_PASSWORD = ''  # 启用登录验证前，请设置唯一且足够强的密码
 
 # --- 记忆存储 ---
 CORE_MEMORY_DIR = 'CoreMemory'
