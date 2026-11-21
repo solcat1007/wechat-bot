@@ -243,7 +243,11 @@ def login():
     if request.method == 'POST':
         password = request.form.get('password', '')
         stored_pwd = config.get('LOGIN_PASSWORD', '')
-        
+
+        # 登录功能启用时，空密码必须失败关闭，不能接受空字符串登录
+        if not isinstance(stored_pwd, str) or not stored_pwd.strip():
+            return render_template('login.html', error="尚未设置登录密码，请先在本地配置中设置强密码"), 503
+
         if password == stored_pwd:
             session['logged_in'] = True
             return redirect(url_for('index'))
