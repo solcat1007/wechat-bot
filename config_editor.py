@@ -268,6 +268,7 @@ def login_required(f):
     return decorated_function
 
 @app.route('/start_bot', methods=['POST'])
+@login_required
 def start_bot():
     global bot_process
     if bot_process is None or bot_process.poll() is not None:
@@ -299,6 +300,7 @@ def start_bot():
     return {'status': 'started'}, 200
 
 @app.route('/stop_bot', methods=['POST'])
+@login_required
 def stop_bot():
     global bot_process, last_heartbeat_time, current_bot_pid
     # 检查状态时，也考虑 current_bot_pid 是否指示有活跃进程
@@ -335,6 +337,7 @@ def stop_bot():
         return {'status': 'stopped'}, 200
     
 @app.route('/bot_status')
+@login_required
 def bot_status():
     global bot_process, last_heartbeat_time, current_bot_pid
     
@@ -2303,6 +2306,7 @@ def test_forum_ai(character_name):
         return f"测试失败: {str(e)}", 500
 
 @app.route('/run_one_key_detection', methods=['GET'])
+@login_required
 def run_one_key_detection():
     bat_file_path = "一键检测.bat"
     if os.path.exists(bat_file_path):
