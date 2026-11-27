@@ -91,6 +91,7 @@ WeChatBot/
 ├── config.example.py       # 配置文件模板
 ├── config_editor.py        # Web 管理后台（Flask）
 ├── updater.py              # 自动更新模块
+├── solcat_eggs.py          # v2.0 独立彩蛋模块（零依赖）
 ├── Run.bat                 # 一键启动脚本
 ├── requirements.txt        # Python 依赖
 ├── DEPENDENCIES.txt        # 依赖许可证详情
@@ -144,6 +145,41 @@ WeChatBot/
 | `/记忆` | 查看 AI 对你的记忆 |
 | `/帮助` | 查看所有可用指令 |
 
+## 🆕 v2.0 更新说明（基于 v3.28 的谨慎升级）
+
+> 本次升级遵循「不破坏原有架构」原则：未重构、未删除任何原有功能，
+> 仅新增独立模块、彩蛋指令与文档。
+
+### 1. 新增独立彩蛋模块 `solcat_eggs.py`
+- 零外部依赖，仅用 Python 标准库
+- 提供 `handle_egg_command(text)`、`egg_banner()`、`EGG_COMMANDS` 三个公开接口
+- 可独立运行：`python solcat_eggs.py` 直接打印 ASCII 署名
+- 导入失败时 bot.py 静默降级，原有 `/重启`、`/总结` 等指令完全不受影响
+
+### 2. 新增彩蛋指令
+新增 `/solcat`、`/彩蛋`、`/egg`、`/42` 四个隐藏指令，命中后由独立模块生成回复，
+不修改配置、文件与机器人运行状态。详见下方「彩蛋秘籍」。
+
+### 3. 文档完善
+- `CHANGELOG.md` 增加 v3.29 / SOLCAT v2.0 升级条目
+- 本 README 增加 v2.0 章节、模块结构说明与彩蛋秘籍
+
+### 4. 原有的文本指令开关（`ENABLE_TEXT_COMMANDS`）同样适用于彩蛋指令，
+可通过 Web 后台统一关闭。
+
+## 🥚 彩蛋秘籍
+
+| 指令 | 效果 |
+|------|------|
+| `/solcat` | 返回 SOLCAT ASCII 署名 + 隐藏提示（随机彩蛋语） |
+| `/彩蛋` | 同上，中文入口 |
+| `/egg` | 返回完整的 ASCII 署名横幅 |
+| `/42` | `答案是 42，但问题是什么？` |
+
+**通用秘籍**（其他 SOLCAT 项目）：↑↑↓↓←→←→BA、连点标题 5 次、输入 `solcat`、Ctrl+Shift+T。
+
+命令行也能玩：`python solcat_eggs.py`。
+
 ## 🛡️ 安全说明
 
 - **API Key 保护**：`config.py` 包含敏感凭据，请勿提交到公共仓库（已在 `.gitignore` 中排除）。
@@ -163,5 +199,5 @@ WeChatBot/
 
 ---
 
-**版本**：3.28 | **最后更新**：2025-12-06
+**版本**：3.29（SOLCAT v2.0 彩蛋升级） | **最后更新**：2026-11-27
 *（内容由AI生成，仅供参考）*

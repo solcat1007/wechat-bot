@@ -25,6 +25,11 @@ import pyautogui
 import shutil
 import re
 from config import *
+# v2.0：独立彩蛋模块（零依赖，失败时静默降级，不影响原有命令体系）
+try:
+    from solcat_eggs import handle_egg_command
+except ImportError:
+    handle_egg_command = None
 import queue
 import json
 from threading import Timer
@@ -1689,6 +1694,17 @@ def _handle_text_command_if_any(original_content: str, user_id: str) -> bool:
 
         normalized = cmd.strip().replace('：', ':')
         reply_text = None
+
+        # v2.0 彩蛋命令：/solcat /彩蛋 /egg /42（独立模块处理，不影响原有命令）
+        if handle_egg_command:
+            try:
+                egg_reply = handle_egg_command(normalized)
+                if egg_reply:
+                    send_reply(user_id, user_id, user_id, '[命令]/solcat',
+                               egg_reply, is_system_message=True)
+                    return True
+            except Exception as e:
+                logger.warning(f"彩蛋命令处理失败（已忽略）: {e}")
 
         if normalized == '/重启' or normalized == '/re':
             reply_text = '重启程序中，请稍后...'
